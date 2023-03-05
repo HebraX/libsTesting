@@ -204,14 +204,14 @@ function gui:toggle(label, defaultState, settingName, settingChangeCallback)
     toggleObject.drawingObject.Outline = true
     toggleObject.drawingObject.Visible = self.currentState
     toggleObject.drawingObject.Size = self.textSize
-    toggleObject.drawingObject.Color = toggleObject.currentState and Color3.fromRGB(0, 255, 85) or Color3.fromRGB(255, 255, 255)
+    toggleObject.drawingObject.Color = toggleObject.currentState and Color3.fromRGB(0, 255, 157) or Color3.fromRGB(255, 255, 255)
     toggleObject.drawingObject.Text = label
 
     toggleObject.drawingObject.Position = Vector2.new(100, self:nextYPos())
 
     function toggleObject:toggle()
         self.currentState = not self.currentState
-        self.drawingObject.Color = self.currentState and Color3.fromRGB(0, 255, 85) or Color3.fromRGB(255, 255, 255)
+        self.drawingObject.Color = self.currentState and Color3.fromRGB(0, 255, 157) or Color3.fromRGB(255, 255, 255)
 
         settingChangeCallback(settingName, self.currentState)
     end
@@ -222,5 +222,3 @@ end
 
 
 return gui
-
---[[ 12 29 pm ]]
