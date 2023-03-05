@@ -83,7 +83,9 @@ function gui:create(name, defaultState, isNotMain)
                 nextToggle = (nextToggle == 0 and self:getCount(self.orderedToggles)) or nextToggle
                 
                 if nextToggle ~= 0 then
-                    self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].baseText
+                    if self.orderedToggles[self.currentToggle] then
+                        self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].baseText
+                    end
                     self.currentToggle = nextToggle
                     self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].gui and ("[ " .. self.orderedToggles[self.currentToggle].baseText .. " ]") or ("--> " .. self.orderedToggles[self.currentToggle].baseText)
                 end
@@ -92,7 +94,9 @@ function gui:create(name, defaultState, isNotMain)
                 nextToggle = (nextToggle == (self:getCount(self.orderedToggles) + 1) and 1) or nextToggle
                 
                 if self:getCount(self.orderedToggles) > 0 then
-                    self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].baseText
+                    if self.orderedToggles[self.currentToggle] then
+                        self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].baseText
+                    end
                     self.currentToggle = nextToggle
                     self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].gui and ("[ " .. self.orderedToggles[self.currentToggle].baseText .. " ]") or ("--> " .. self.orderedToggles[self.currentToggle].baseText)
                 end
