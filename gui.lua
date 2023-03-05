@@ -107,8 +107,9 @@ function gui:create(name, defaultState, isNotMain)
                     self.orderedToggles[self.currentToggle]:toggle()
                 end
             elseif input.KeyCode == self.settings.back and self.currentState then
+                print(self.mainGUI, self.currentState, self.labelRef.Text)
                 if not self.mainGUI and self.backCallback then
-                    self:backCallback(false)
+                    self.backCallback(false)
                 end
             elseif input.KeyCode == self.settings.toggle then
                 self:toggleVisibility()
@@ -158,6 +159,8 @@ function gui:category(label)
             state = not self.gui.currentState
         end
 
+        print(state)
+
         gui.listenToInput = not state
         self.gui.listenToInput = state
 
@@ -165,16 +168,16 @@ function gui:category(label)
         self.gui:toggleVisibility(state)
     end
 
-    function categoryObject.gui:backCallback(state)
+    categoryObject.gui.backCallback = function(state)
         if state == nil then
-            state = not self.currentState
+            state = not categoryObject.gui.currentState
         end
 
         gui.listenToInput = not state
-        self.listenToInput = state
+        categoryObject.gui.listenToInput = state
 
         gui:toggleVisibility(not state)
-        self:toggleVisibility(state)
+        categoryObject.gui:toggleVisibility(state)
     end
 
     table.insert(self.orderedToggles, categoryObject)
@@ -216,4 +219,4 @@ end
 
 return gui
 
---[[ 12 06 pm ]]
+--[[ 12 13 pm ]]
