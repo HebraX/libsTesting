@@ -145,6 +145,7 @@ function gui:category(label)
     categoryObject.drawingObject.Position = Vector2.new(75, self:nextYPos())
     
     categoryObject.gui:create(label, false, true)
+    categoryObject.gui.listenToInput = false
 
     function categoryObject:toggle(state)
         gui.listenToInput = not state
