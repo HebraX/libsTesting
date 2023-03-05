@@ -71,7 +71,7 @@ function gui:create(name, defaultState, isNotMain)
     guiName.Color = Color3.fromRGB(255, 255, 255)
     guiName.Text = name
 
-    guiName.Position = Vector2.new(75, 100)
+    guiName.Position = Vector2.new(100, 100)
 
     self.labelRef = guiName
     self:addRef(guiName)
@@ -121,7 +121,7 @@ function gui:label(label)
     guiLabel.Color = Color3.fromRGB(255, 255, 255)
     guiLabel.Text = label
 
-    guiLabel.Position = Vector2.new(75, self:nextYPos())
+    guiLabel.Position = Vector2.new(100, self:nextYPos())
 
     self:addRef(guiLabel)
 end
@@ -142,7 +142,7 @@ function gui:category(label)
     categoryObject.drawingObject.Color = Color3.fromRGB(255, 255, 255)
     categoryObject.drawingObject.Text = label
 
-    categoryObject.drawingObject.Position = Vector2.new(75, self:nextYPos())
+    categoryObject.drawingObject.Position = Vector2.new(100, self:nextYPos())
     
     categoryObject.gui:create(label, false, true)
     categoryObject.gui.listenToInput = false
@@ -186,7 +186,7 @@ function gui:toggle(label, defaultState, settingName, settingChangeCallback)
     toggleObject.drawingObject.Color = toggleObject.currentState and Color3.fromRGB(0, 255, 85) or Color3.fromRGB(255, 255, 255)
     toggleObject.drawingObject.Text = label
 
-    toggleObject.drawingObject.Position = Vector2.new(75, self:nextYPos())
+    toggleObject.drawingObject.Position = Vector2.new(100, self:nextYPos())
 
     function toggleObject:toggle()
         self.currentState = not self.currentState
