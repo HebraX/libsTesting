@@ -154,6 +154,10 @@ function gui:category(label)
     categoryObject.gui.listenToInput = false
 
     function categoryObject:toggle(state)
+        if state == nil then
+            state = not self.gui.currentState
+        end
+
         gui.listenToInput = not state
         self.gui.listenToInput = state
 
@@ -162,6 +166,10 @@ function gui:category(label)
     end
 
     function categoryObject.gui:backCallback(state)
+        if state == nil then
+            state = not self.currentState
+        end
+
         gui.listenToInput = not state
         self.listenToInput = state
 
@@ -208,4 +216,4 @@ end
 
 return gui
 
---[[ 12 02 pm ]]
+--[[ 12 06 pm ]]
