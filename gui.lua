@@ -159,13 +159,14 @@ function gui:category(label)
             state = not self.gui.currentState
         end
 
-        print(state)
+        print("enter", state)
 
         gui.listenToInput = not state
         self.gui.listenToInput = state
 
         gui:toggleVisibility(not state)
         self.gui:toggleVisibility(state)
+        self.gui.currentState = state
     end
 
     categoryObject.gui.backCallback = function(state)
@@ -222,4 +223,4 @@ end
 
 return gui
 
---[[ 12 20 pm]]
+--[[ 12 29 pm ]]
