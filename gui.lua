@@ -176,8 +176,11 @@ function gui:category(label)
         gui.listenToInput = not state
         categoryObject.gui.listenToInput = state
 
+        print("back", state)
+
         gui:toggleVisibility(not state)
         categoryObject.gui:toggleVisibility(state)
+        categoryObject.gui.currentState = state
     end
 
     table.insert(self.orderedToggles, categoryObject)
@@ -219,4 +222,4 @@ end
 
 return gui
 
---[[ 12 13 pm ]]
+--[[ 12 20 pm]]
