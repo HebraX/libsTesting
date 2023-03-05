@@ -38,7 +38,7 @@ function gui:toggleVisibility(state)
         self.currentState = state
     end
 
-    for _,v in pairs(self.allRefs) do
+    for v,_ in pairs(self.allRefs) do
         v.Visible = state
     end
 
@@ -133,6 +133,7 @@ function gui:category(label)
         baseText = label
     }
 
+    categoryObject.drawingObject = Drawing.new("Text")
     categoryObject.drawingObject.Font = Drawing.Fonts.Monospace
     categoryObject.drawingObject.Center = true
     categoryObject.drawingObject.Outline = true
@@ -143,7 +144,7 @@ function gui:category(label)
 
     categoryObject.drawingObject.Position = Vector2.new(75, self:nextYPos())
     
-    categoryObject:create(label, false, true)
+    categoryObject.gui:create(label, false, true)
 
     function categoryObject:toggle(state)
         gui.listenToInput = not state
@@ -160,6 +161,9 @@ function gui:category(label)
         gui:toggleVisibility(not state)
         self:toggleVisibility(state)
     end
+
+    table.insert(self.orderedToggles, categoryObject)
+    self:addRef(categoryObject.drawingObject)
 
     return categoryObject.gui
 end
@@ -193,5 +197,6 @@ function gui:toggle(label, defaultState, settingName, settingChangeCallback)
     table.insert(self.orderedToggles, toggleObject)
     self:addRef(toggleObject.drawingObject)
 end
+
 
 return gui
