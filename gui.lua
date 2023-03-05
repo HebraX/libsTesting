@@ -42,11 +42,13 @@ function gui:toggleVisibility(state)
         v.Visible = state
     end
 
+    --[[
     for _,v in pairs(self.orderedToggles) do
         if v.gui then
             v:toggle(state)
         end
     end
+    ]]
 end
 
 function gui:nextYPos()
@@ -206,4 +208,4 @@ end
 
 return gui
 
---[[ test ]]
+--[[ 12 00 pm ]]
