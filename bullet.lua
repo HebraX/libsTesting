@@ -194,17 +194,21 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
         else
             u1:PlaySoundV2(l__ItemRoot__30.FireSound, l__ItemRoot__30.FireSound.TimeLength, l__Temp__6);
         end;
+        print("pass4.5")
         if v32:GetAttribute("MuzzleEffect") == true then
             local v64 = l__SpecialProperties__33 and l__SpecialProperties__33:GetAttribute("MuzzleEffect");
             local v65
+            print("pass4.6")
             if v64 then
                 v65 = l__VFX__7.MuzzleEffects.Override:FindFirstChild(v64) or l__VFX__7.MuzzleEffects;
             else
                 v65 = l__VFX__7.MuzzleEffects;
             end;
+            print("pass4.7")
             local v66 = (v65:FindFirstChild(v52) or l__VFX__7.MuzzleEffects:FindFirstChild(v52)):GetChildren();
             local v67 = v66[math.random(1, #v66)];
             local v68 = v67.Particles:GetChildren();
+            print("pass4.8")
             if v67:FindFirstChild("MuzzleLight") then
                 local v69 = v67.MuzzleLight:Clone();
                 v69.Range = math.clamp(v69.Range + math.random(-2, 2) / 2, 0, 50);
@@ -212,6 +216,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 l__Debris__8:AddItem(v69, 0.1);
                 v69.Parent = v27;
             end;
+            print("pass4.9")
             for v70 = 1, #v68 do
                 if v68[v70].className == "ParticleEmitter" then
                     local v71 = v68[v70]:Clone();
@@ -220,6 +225,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                         v72 = math.clamp(v45 * v44 / 45 / 2.4, 0, 0.6);
                     end;
                     local v73 = math.clamp(v72, 1, 10);
+                    print("pass4.95")
                     v71.Lifetime = NumberRange.new(v71.Lifetime.Min * v73, v71.Lifetime.Max * v73);
                     v71.Size = u9(v71.Size, v72);
                     v71.Parent = v27;
@@ -517,6 +523,3 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
-
-
---[[ 7 26 ]]
