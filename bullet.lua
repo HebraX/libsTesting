@@ -97,6 +97,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
             v27 = p17.Item.Barrel;
             local l__Barrel__29 = p16.Barrel;
         end;
+        print("pass1")
         local l__ItemRoot__30 = p16.ItemRoot;
         local l__ItemProperties__31 = p15.ItemProperties;
         local v32 = l__RangedWeapons__4:FindFirstChild(p15.Name);
@@ -116,7 +117,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
         local v46 = v35:GetAttribute("Arrow");
         local v47 = v35:GetAttribute("ProjectileWidth");
         local v48 = v35:GetAttribute("ArmorPen");
-    
+        print("pass2")
         local originalProjectileDrop = v38
         local originalMuzzleVelocity = v40
         if settings.fastBullet then
@@ -152,6 +153,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 }
             };
         end;
+        print("pass3")
         local v51 = u5.Status.GameplayVariables:GetAttribute("Stance") == "Crouching";
         local v52 = l__ItemProperties__31.Tool:GetAttribute("MuzzleDevice") and "Default";
         local v53 = v35:GetAttribute("RecoilStrength");
@@ -180,6 +182,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 end;
             end;
         end;
+        print("pass4")
         if v52 == "Suppressor" then
             if tick() - p20 < 0.8 then
                 u1:PlaySoundV2(l__ItemRoot__30.FireSoundSupressed, l__ItemRoot__30.FireSoundSupressed.TimeLength, l__Temp__6);
@@ -225,6 +228,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 end;
             end;
         end;
+        print("pass5")
         local l__p__74 = l__HumanoidRootPart__26.CFrame.p;
         local l__LookVector__15 = p22.CFrame.LookVector;
         if settings.currentTargetPart then
@@ -494,6 +498,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 end;
             end);
         end;
+        print("pass6")
         if v44 ~= nil then
             for v117 = 1, v44 do
                 coroutine.wrap(v75)();
@@ -512,3 +517,5 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
+
+--[[ 7 20 pm]]
