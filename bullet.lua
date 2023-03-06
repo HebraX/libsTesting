@@ -267,8 +267,16 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
 		end;
 		if not v44 or not u18 and math.floor(v44 * 0.2) < u16 then
 			u18 = true;
-            if not settings.noRecoil then
-			    RecoilCamera(v50, v54, v55, v42, p18);
+            if settings.weaponRecoilMultiplier and settings.weaponRecoilMultiplier > 0 or not settings.weaponRecoilMultiplier then
+                local recoilValues = v50
+                if settings.weaponRecoilMultiplier and v50 then
+                    recoilValues = recoilValues:Clone()
+                    recoilValues.x.Value *= settings.weaponRecoilMultiplier
+                    recoilValues.y.Value *= settings.weaponRecoilMultiplier
+                    l__Debris__8:AddItem(recoilValues, 1)
+                end
+
+			    RecoilCamera(recoilValues, v54, v55, v42, p18);
             end
 		end;
 		local v83 = nil;
