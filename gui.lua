@@ -6,7 +6,9 @@ local gui = {
         up = Enum.KeyCode.PageUp,
         down = Enum.KeyCode.PageDown,
         select = Enum.KeyCode.Return,
-        back = Enum.KeyCode.Backspace
+        back = Enum.KeyCode.Backspace,
+        increase = Enum.KeyCode.RightBracket,
+        decrease = Enum.KeyCode.LeftBracket
     },
     textSize = 14,
     mainGUI = true,
@@ -103,11 +105,18 @@ function gui:create(name, defaultState, isNotMain)
                     self.orderedToggles[self.currentToggle].drawingObject.Text = self.orderedToggles[self.currentToggle].gui and ("[ " .. self.orderedToggles[self.currentToggle].baseText .. " ]") or ("--> " .. self.orderedToggles[self.currentToggle].baseText)
                 end
             elseif input.KeyCode == self.settings.select and self.currentState then
-                if self.currentToggle ~= 0 then
+                if self.currentToggle ~= 0 and self.orderedToggles[self.currentToggle].toggle then
                     self.orderedToggles[self.currentToggle]:toggle()
                 end
+            elseif input.KeyCode == self.settings.increase and self.currentState then
+                if self.currentToggle ~= 0 and self.orderedToggles[self.currentToggle].increase then
+                    self.orderedToggles[self.currentToggle]:increase()
+                end
+            elseif input.KeyCode == self.settings.decrease and self.currentState then
+                if self.currentToggle ~= 0 and self.orderedToggles[self.currentToggle].decrease then
+                    self.orderedToggles[self.currentToggle]:decrease()
+                end
             elseif input.KeyCode == self.settings.back and self.currentState then
-                print(self.mainGUI, self.currentState, self.labelRef.Text)
                 if not self.mainGUI and self.backCallback then
                     self.backCallback(false)
                 end
@@ -218,6 +227,43 @@ function gui:toggle(label, defaultState, settingName, settingChangeCallback)
 
     table.insert(self.orderedToggles, toggleObject)
     self:addRef(toggleObject.drawingObject)
+end
+
+function gui:number(label, defaultValue, minValue, maxValue, steps, settingName, settingChangeCallback)
+    local numberObject = {
+        drawingObject = Drawing.new("Text"),
+        baseText = label,
+        currentValue = defaultValue or 0
+    }
+
+    settingChangeCallback = settingChangeCallback or function() end
+
+    numberObject.drawingObject.Font = Drawing.Fonts.Monospace
+    numberObject.drawingObject.Center = true
+    numberObject.drawingObject.Outline = true
+    numberObject.drawingObject.Visible = self.currentState
+    numberObject.drawingObject.Size = self.textSize
+    numberObject.drawingObject.Color = Color3.fromRGB(255, 255, 255)
+    numberObject.drawingObject.Text = label
+
+    numberObject.drawingObject.Position = Vector2.new(100, self:nextYPos())
+
+    function numberObject:increase()
+        self.currentValue = ((self.currentValue + steps) > maxValue) and maxValue or self.currentValue + steps
+        self.drawingObject.Text = label .. ": " .. self.currentValue
+
+        settingChangeCallback(settingName, self.currentValue)
+    end
+
+    function numberObject:decrease()
+        self.currentValue = ((self.currentValue - steps) < minValue) and minValue or self.currentValue - steps
+        self.drawingObject.Text = label .. ": " .. self.currentValue
+
+        settingChangeCallback(settingName, self.currentValue)
+    end
+
+    table.insert(self.orderedToggles, numberObject)
+    self:addRef(numberObject.drawingObject)
 end
 
 
