@@ -248,6 +248,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
         local u21 = math.clamp(v40 / 2400, 0.7, 1.2);
         local u22 = v48;
         local function v75()
+            print("pass7")
             local v76 = RaycastParams.new();
             v76.FilterType = Enum.RaycastFilterType.Blacklist;
             local v77 = { l__Character__25, p17, u10 };
@@ -265,6 +266,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 v81 = v81 + Vector3.new(math.random(-v43, v43), math.random(-v43, v43), math.random(-v43, v43));
                 v79 = (v81 - v80).Unit;
             end;
+            print("pass8")
             u16 = u16 + 1;
             if u16 == 1 then
                 u17 = game.Players.LocalPlayer.UserId .. math.ceil(tick() * 20) / 20;
@@ -278,20 +280,23 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     local v82 = l__FireProjectile__11:InvokeServer(v79, u17, true);
                 end)();
             end;
+            print("pass9")
             if not v44 or not u18 and math.floor(v44 * 0.2) < u16 then
                 u18 = true;
                 if settings.weaponRecoilMultiplier and settings.weaponRecoilMultiplier > 0 or not settings.weaponRecoilMultiplier then
                     local recoilValues = v50
                     if settings.weaponRecoilMultiplier and v50 then
                         recoilValues = recoilValues:Clone()
-                        recoilValues.x.Value *= settings.weaponRecoilMultiplier
-                        recoilValues.y.Value *= settings.weaponRecoilMultiplier
-                        l__Debris__8:AddItem(recoilValues, 1)
+                        print(settings.weaponRecoilMultiplier)
+                        recoilValues.x.Value = recoilValues.x.Value * settings.weaponRecoilMultiplier
+                        recoilValues.y.Value = recoilValues.y.Value * settings.weaponRecoilMultiplier
+                        l__Debris__8:AddItem(recoilValues, 5)
                     end
     
                     RecoilCamera(recoilValues, v54, v55, v42, p18);
                 end
             end;
+            print("pass10")
             local v83 = nil;
             local v84 = nil;
             if v41 then
@@ -314,6 +319,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
             local u29 = {};
             local u30 = {};
             local u31 = false;
+            print("pass11")
             u23 = l__RunService__14.RenderStepped:Connect(function(p23)
                 if settings.fastBullet then
                     u24 = 1
@@ -327,9 +333,10 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     local v89 = nil;
                     local v90 = nil;
                     local v91 = nil;
+                    local v92
                     if v88 then
                         v89 = v88.Instance;
-                        local v92 = v88.Position;
+                        v92 = v88.Position;
                         v90 = v88.Normal;
                         v91 = v88.Material;
                     else
@@ -345,15 +352,15 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     
                             local TestRaycast = workspace:Raycast(workspace.CurrentCamera.CFrame.Position, (settings.currentTargetPart.Position - workspace.CurrentCamera.CFrame.Position).Unit * 99999, RaycastParamsForTestRaycast);
                             if TestRaycast then
-                                v71 = TestRaycast.Instance;
-                                v74 = TestRaycast.Position;
-                                v72 = TestRaycast.Normal;
-                                v73 = TestRaycast.Material;
+                                v89 = TestRaycast.Instance;
+                                v92 = TestRaycast.Position;
+                                v90 = TestRaycast.Normal;
+                                v91 = TestRaycast.Material;
                             else
-                                v71 = settings.currentTargetPart
-                                v74 = settings.currentTargetPart.Position
-                                v72 = settings.currentTargetPart.CFrame.LookVector
-                                v73 = settings.currentTargetPart.Material
+                                v89 = settings.currentTargetPart
+                                v92 = settings.currentTargetPart.Position
+                                v90 = settings.currentTargetPart.CFrame.LookVector
+                                v91 = settings.currentTargetPart.Material
                             end
                         end
                     end
@@ -523,3 +530,5 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
+
+--[[ 7 44 pm]]
