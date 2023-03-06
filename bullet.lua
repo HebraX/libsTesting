@@ -327,6 +327,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     u24 = u24 + p23;
                 end
                 if u24 > 0.008333333333333333 then
+                    print("pass11.5")
                     u25 = u25 + u24;
                     print("U19:", u19, "| U24:", u24)
                     local v87 = u19 * u24;
@@ -548,4 +549,4 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
---[[ 8 10 pm]]
+--[[ 8 17 pm ]]
