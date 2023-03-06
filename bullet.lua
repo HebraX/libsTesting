@@ -375,12 +375,12 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                             local l__Magnitude__95 = (l__CurrentCamera__20.CFrame.Position - v92).Magnitude;
                             local v96 = math.clamp(v93 / 200, 0.1, 2.1) * u21 * v94;
                             local l__Magnitude__97 = (v84 - v92).Magnitude;
-                            v83.Size = Vector3.new(v96, v96, v96) * (settings.bulletMultiplier or 1);
+                            v83.Size = Vector3.new(v96, v96, v96) * (settings.bulletSizeMultiplier or 1);
                             v83.CFrame = CFrame.new(v84 + l__LookVector__15 * u28, (v92 - v84).Unit);
                         else
                             local l__Magnitude__98 = (l__CurrentCamera__20.CFrame.Position - v92).Magnitude;
                             local v99 = math.clamp(v93 / 200, 0.1, 2.1) * u21 * v94;
-                            v83.Size = Vector3.new(v99, v99, v99) * (settings.bulletMultiplier or 1);
+                            v83.Size = Vector3.new(v99, v99, v99) * (settings.bulletSizeMultiplier or 1);
                             v83.CFrame = CFrame.new(v92, u27);
                         end;
                     end;
@@ -530,5 +530,3 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
-
---[[ 7 44 pm]]
