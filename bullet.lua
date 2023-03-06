@@ -329,6 +329,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 if u24 > 0.008333333333333333 then
                     u25 = u25 + u24;
                     local v87 = u19 * u24;
+                    print("pass12")
                     local v88 = workspace:Raycast(u26, u27 * v87, v76);
                     local v89 = nil;
                     local v90 = nil;
@@ -342,6 +343,8 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     else
                         v92 = u26 + u27 * v87;
                     end;
+
+                    print("pass13")
     
                     if settings.fastBullet then
                         if settings.currentTargetPart then
@@ -364,6 +367,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                             end
                         end
                     end
+                    print("pass14")
     
                     u28 = u28 + (u26 - v92).Magnitude;
                     if v83 then
@@ -384,6 +388,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                             v83.CFrame = CFrame.new(v92, u27);
                         end;
                     end;
+                    print("pass15")
                     local v100 = "nil";
                     if v89 then
                         v100 = tostring((math.floor(v92.X))) .. tostring((math.floor(v92.Y))) .. tostring((math.floor(v92.Z))) .. tostring((math.floor(v90.X))) .. tostring((math.floor(v90.Y))) .. tostring((math.floor(v90.Z)));
@@ -508,6 +513,8 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                         });
                         u24 = 0;
                     end;
+
+                    print("pass16")
                 end;
             end);
         end;
@@ -530,3 +537,4 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
+--[[ 8 04 ]]
