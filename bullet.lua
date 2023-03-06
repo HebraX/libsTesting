@@ -155,7 +155,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
         end;
         print("pass3")
         local v51 = u5.Status.GameplayVariables:GetAttribute("Stance") == "Crouching";
-        local v52 = l__ItemProperties__31.Tool:GetAttribute("MuzzleDevice") and "Default";
+        local v52 = l__ItemProperties__31.Tool:GetAttribute("MuzzleDevice") and "Default" or "Default";
         local v53 = v35:GetAttribute("RecoilStrength");
         local v54 = v51 and v53 * 0.9 or v53;
         local v55 = v51 and v53 * 0.9 or v53;
@@ -518,4 +518,5 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
 end;
 return v1;
 
---[[ 7 20 pm]]
+
+--[[ 7 26 ]]
