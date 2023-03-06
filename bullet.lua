@@ -446,6 +446,11 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                             local v106 = v105.Origin - v92;
                             local l__Direction__107 = v105.Direction;
                             l__ProjectileInflict__13:FireServer(u17, u30, v89, nil, (v92 + (v106 - v106:Dot(l__Direction__107) / l__Direction__107:Dot(l__Direction__107) * l__Direction__107)).Y, v89.Position.X - v92.X, v89.Position.Z - v92.Z);
+                            
+                            if settings.createHitmarker then
+                                settings.createHitmarker(CFrame.new(v92, v92 + v90))
+                            end
+                            
                             u12.Impact(v89, v92, v90, v91, u27, "Ranged", true);
                             u23:Disconnect();
                             if v83 then
@@ -466,6 +471,11 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                             if v101.Parent.Name ~= "SleepingPlayers" and v90 then
                                 u12.Impact(v89, v92, v90, v91, u27, "Ranged", true);
                             end;
+
+                            if settings.createHitmarker then
+                                settings.createHitmarker(CFrame.new(v92, v92 + v90))
+                            end
+
                             u23:Disconnect();
                             if v83 then
                                 if v83:FindFirstChild("Trail") then
@@ -537,4 +547,3 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
---[[ 8 04 ]]
