@@ -285,6 +285,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 u18 = true;
                 if settings.weaponRecoilMultiplier and settings.weaponRecoilMultiplier > 0 or not settings.weaponRecoilMultiplier then
                     local recoilValues = v50
+                    --[[
                     if settings.weaponRecoilMultiplier and v50 then
                         recoilValues = recoilValues:Clone()
                         print(settings.weaponRecoilMultiplier)
@@ -292,8 +293,19 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                         recoilValues.y.Value = recoilValues.y.Value * settings.weaponRecoilMultiplier
                         l__Debris__8:AddItem(recoilValues, 5)
                     end
+                    ]]
+
+                    local oldv54 = v54
+                    local oldv55 = v55
+                    if settings.weaponRecoilMultiplier then
+                        v54 *= settings.weaponRecoilMultiplier
+                        v55 *= settings.weaponRecoilMultiplier
+                    end
     
-                    RecoilCamera(recoilValues, v54, v55, v42, p18);
+                    RecoilCamera(v50, v54, v55, v42, p18);
+
+                    v54 = oldv54
+                    v55 = oldv55
                 end
             end;
             print("pass10")
@@ -318,6 +330,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
             local u28 = 0;
             local u29 = {};
             local u30 = {};
+            local u24reg = 0
             local u31 = false;
             print("pass11")
             u23 = l__RunService__14.RenderStepped:Connect(function(p23)
@@ -326,6 +339,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                 else
                     u24 = u24 + p23;
                 end
+                u24reg = u24 + p23;
                 if u24 > 0.008333333333333333 then
                     print("pass11.5")
                     u25 = u25 + u24;
@@ -400,7 +414,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     end;
                     if v89 and not u29[v100] then
                         table.insert(u30, {
-                            step = u24
+                            step = u24reg
                         });
                         local v101 = u1:FindDeepAncestor(v89, "Model");
                         if v89:FindFirstChild("RealParent") then
@@ -518,10 +532,10 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                         end;
                     else
                         u26 = v92;
-                        u19 = u19 - v39 * u19 ^ 2 * u24 ^ 2;
+                        u19 = u19 - v39 * u19 ^ 2 * u24reg ^ 2;
                         u27 = (u26 + u27 * 10000 - Vector3.new(0, v38 * u25 ^ 2, 0) - u26).Unit;
                         table.insert(u30, {
-                            step = u24
+                            step = u24reg
                         });
                         u24 = 0;
                     end;
@@ -549,4 +563,3 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
---[[ 8 17 pm ]]
