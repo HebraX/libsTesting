@@ -245,7 +245,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
         local u18 = false;
         local u19 = v40;
         local l__CurrentCamera__20 = workspace.CurrentCamera;
-        local u21 = math.clamp(v40 / 2400, 0.7, 1.2);
+        local u21 = v40 / 2700 --math.clamp(v40 / 2400, 0.7, 1.2);
         local u22 = v48;
         local function v75()
             print("pass7")
@@ -414,7 +414,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                     end;
                     if v89 and not u29[v100] then
                         table.insert(u30, {
-                            step = u24reg
+                            step = u24
                         });
                         local v101 = u1:FindDeepAncestor(v89, "Model");
                         if v89:FindFirstChild("RealParent") then
@@ -535,7 +535,7 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
                         u19 = u19 - v39 * u19 ^ 2 * u24reg ^ 2;
                         u27 = (u26 + u27 * 10000 - Vector3.new(0, v38 * u25 ^ 2, 0) - u26).Unit;
                         table.insert(u30, {
-                            step = u24reg
+                            step = u24
                         });
                         u24 = 0;
                     end;
@@ -563,3 +563,4 @@ function v1.CreateBullet(p14, p15, p16, p17, p18, p19, p20, p21, p22, settings)
     end
 end;
 return v1;
+--[[ 6 34 pm ]]
